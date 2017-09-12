@@ -95,15 +95,16 @@
 
 
 
-<meta name="description" content="talk is cheap show me the code">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://roseboych.github.io/archives/2017/09/index.html">
+<meta name="description" content="不产生数据的地方就不要存  之前看到公司同事写代码，做排行榜。界面显示上面每一个item上都有好多的信息，比如人物的经验 等级 帮派 等等。他的做法是把把排行榜的建了一个单独的表，然后把每行都存起来了。 这样固然是加载和存储的时候方便了许多。其实仔细想一想 完全没有必要这样做。  排行榜本身 并不生产数据只是 把玩家信息进行大小排序，第一种情况如果是玩家等级战力等排序 存一个guid，然后gui">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏中的数据库总结">
+<meta property="og:url" content="https://roseboych.github.io/2017/09/12/游戏中的数据库总结/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="talk is cheap show me the code">
+<meta property="og:description" content="不产生数据的地方就不要存  之前看到公司同事写代码，做排行榜。界面显示上面每一个item上都有好多的信息，比如人物的经验 等级 帮派 等等。他的做法是把把排行榜的建了一个单独的表，然后把每行都存起来了。 这样固然是加载和存储的时候方便了许多。其实仔细想一想 完全没有必要这样做。  排行榜本身 并不生产数据只是 把玩家信息进行大小排序，第一种情况如果是玩家等级战力等排序 存一个guid，然后gui">
+<meta property="og:updated_time" content="2017-09-12T15:43:01.802Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="talk is cheap show me the code">
+<meta name="twitter:title" content="游戏中的数据库总结">
+<meta name="twitter:description" content="不产生数据的地方就不要存  之前看到公司同事写代码，做排行榜。界面显示上面每一个item上都有好多的信息，比如人物的经验 等级 帮派 等等。他的做法是把把排行榜的建了一个单独的表，然后把每行都存起来了。 这样固然是加载和存储的时候方便了许多。其实仔细想一想 完全没有必要这样做。  排行榜本身 并不生产数据只是 把玩家信息进行大小排序，第一种情况如果是玩家等级战力等排序 存一个guid，然后gui">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://roseboych.github.io/archives/2017/09/"/>
+  <link rel="canonical" href="https://roseboych.github.io/2017/09/12/游戏中的数据库总结/"/>
 
 
 
 
 
-  <title>Archiv | Hexo</title>
+  <title>游戏中的数据库总结 | Hexo</title>
   
 
 
@@ -158,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -232,111 +233,160 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Öhm..! Insgesamt 2 Artikel. Bleib dran.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://roseboych.github.io/2017/09/12/游戏中的数据库总结/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuyongtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/09/12/游戏中的数据库总结/" itemprop="url">
-              
-                <span itemprop="name">游戏中的数据库总结</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">游戏中的数据库总结</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-12T23:42:46+08:00"
-              content="2017-09-12" >
-          09-12
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-12T23:42:46+08:00">
+                2017-09-12
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/12/myfirst/" itemprop="url">
-              
-                <span itemprop="name">javaScript 优化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-12T01:19:06+08:00"
-              content="2017-09-12" >
-          09-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <ol>
+<li>不产生数据的地方就不要存</li>
+</ol>
+<p>之前看到公司同事写代码，做排行榜。界面显示上面每一个item上都有好多的信息，比如人物的经验 等级 帮派 等等。他的做法是把把排行榜的建了一个单独的表，然后把每行都存起来了。 这样固然是加载和存储的时候方便了许多。其实仔细想一想 完全没有必要这样做。</p>
+<ol>
+<li><p>排行榜本身 并不生产数据只是 把玩家信息进行大小排序，第一种情况如果是玩家等级战力等排序 存一个guid，然后guid作为索引，在起服的时候去加载就可以；更新的时候不用大批量的删除和update。把guid存一下就可以。大批量的删除和更新会造成数据的性能问题。对于在游戏过程中产生的热数据 进行排序 这个就完全是数据结构和算法的基础知识了。一般情况下排行榜也只是显示前100。加上这个限制。 做不到logn的复杂度。应该把数据结构在好好复习复习 特别是排序那块。数据量 是否有序 使用的内存大小</p>
+</li>
+<li><p>有些情况下 故意使数据库冗余 来提高性能。这种情况一般是为了在数据库 在服务器运行过程中不产生表的连接。产生性能问题。如果是在起服加载的时候用到没有必要用到。</p>
+</li>
+<li><p>数据库性能问题 大部分是索引的问题。 问题排查 索引的注意事项 高性能mysql 有一章专门讲这个问题。</p>
+</li>
+<li><p>redis 作为内存数据库 作为缓存服务器还行， 不能用于持久化，上线之后太占机器。</p>
+</li>
+<li><p>数据库的切分 如果一个表的列数过多，就应该做适当的切分（怎么切这个要看具体的业务） 竖切。</p>
+</li>
+<li><p>批量增删查 性能显著好于单条的。</p>
+</li>
+<li><p>现在想来真不知道我们redis 有什么用处 没有作为mysql数据库的cache。</p>
+</li>
+</ol>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/12/myfirst/" rel="next" title="javaScript 优化">
+                <i class="fa fa-chevron-left"></i> javaScript 优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -344,6 +394,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -528,6 +582,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
 
   
 

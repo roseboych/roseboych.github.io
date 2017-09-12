@@ -95,16 +95,16 @@
 
 
 
-<meta name="description" content="hlelo">
+<meta name="description" content="避免使用 eval 或 Function 构造器 每次进行 eval 或调用 Function 构造器，脚本引擎都会启动一些机制来将 字符串 形式的源代码转换为可执行的代码。\ 这通常会严重影响性能 —— 比如说，直接调用函数的性能是它的 100 倍。\ 调用 eval 的上下文当中解释，这就意味着编译器无法优化相关上下文，就会留给浏览器很多需要在运行时解释的内容。这就造成了额外的性能影响。\ F">
 <meta property="og:type" content="article">
-<meta property="og:title" content="myfirst">
+<meta property="og:title" content="javaScript 优化">
 <meta property="og:url" content="https://roseboych.github.io/2017/09/12/myfirst/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hlelo">
-<meta property="og:updated_time" content="2017-09-11T17:19:44.584Z">
+<meta property="og:description" content="避免使用 eval 或 Function 构造器 每次进行 eval 或调用 Function 构造器，脚本引擎都会启动一些机制来将 字符串 形式的源代码转换为可执行的代码。\ 这通常会严重影响性能 —— 比如说，直接调用函数的性能是它的 100 倍。\ 调用 eval 的上下文当中解释，这就意味着编译器无法优化相关上下文，就会留给浏览器很多需要在运行时解释的内容。这就造成了额外的性能影响。\ F">
+<meta property="og:updated_time" content="2017-09-12T15:39:22.692Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="myfirst">
-<meta name="twitter:description" content="hlelo">
+<meta name="twitter:title" content="javaScript 优化">
+<meta name="twitter:description" content="避免使用 eval 或 Function 构造器 每次进行 eval 或调用 Function 构造器，脚本引擎都会启动一些机制来将 字符串 形式的源代码转换为可执行的代码。\ 这通常会严重影响性能 —— 比如说，直接调用函数的性能是它的 100 倍。\ 调用 eval 的上下文当中解释，这就意味着编译器无法优化相关上下文，就会留给浏览器很多需要在运行时解释的内容。这就造成了额外的性能影响。\ F">
 
 
 
@@ -140,7 +140,7 @@
 
 
 
-  <title>myfirst | Hexo</title>
+  <title>javaScript 优化 | Hexo</title>
   
 
 
@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -264,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">myfirst</h1>
+          <h1 class="post-title" itemprop="name headline">javaScript 优化</h1>
         
 
         <div class="post-meta">
@@ -274,7 +274,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-12T01:19:06+08:00">
                 2017-09-12
@@ -314,7 +314,26 @@
       
 
       
-        <p>hlelo</p>
+        <h4 id="避免使用-eval-或-Function-构造器"><a href="#避免使用-eval-或-Function-构造器" class="headerlink" title="避免使用 eval 或 Function 构造器"></a>避免使用 eval 或 Function 构造器</h4><p> 每次进行 eval 或调用 Function 构造器，脚本引擎都会启动一些机制来将 <em>字符串</em> 形式的源代码转换为可执行的代码。\<br> 这通常会严重影响性能 —— 比如说，直接调用函数的性能是它的 100 倍。\<br> 调用 eval 的上下文当中解释，这就意味着编译器无法优化相关上下文，就会留给浏览器很多需要在运行时解释的内容。这就造成了额外的性能影响。\<br> Function 构造器比 eval 要好一点，因为它不影响周围代码的使用，但它仍然相当缓慢。\<br>  <em>eval函数可以通过闭包来替代，如果需要使用函数那么使用function</em></p>
+<h4 id="不要使用-with"><a href="#不要使用-with" class="headerlink" title="不要使用 with"></a>不要使用 with</h4><p>with 会在引用变量时为脚本引擎构造一个额外的作用域。仅此，会造成少许性能下降。\<br>然而，编译期并不能获知这个作用域的内容，所以编译器不会像优化普通的作用域(比如由函数创建的作用域)那样优化它。</p>
+<h4 id="不要在要求性能的函数中使用-try-catch-finally"><a href="#不要在要求性能的函数中使用-try-catch-finally" class="headerlink" title="不要在要求性能的函数中使用 try-catch-finally"></a>不要在要求性能的函数中使用 try-catch-finally</h4><p>它运行时会在当前作用域创建一个新变量。在每次 catch 子句运行的时候，这个变量会引用捕捉到的异常对象。\<br>这个变量不会存在于脚本的其它部分，哪怕是在相同的作用域中。它在 catch 子句开始的时候创建，并在这个子句结束的时候销毁。</p>
+<h4 id="尽量不用全局变量"><a href="#尽量不用全局变量" class="headerlink" title="尽量不用全局变量"></a>尽量不用全局变量</h4><ul>
+<li><p>如果代码在函数或另一个作用域中引用全局变量，脚本引擎会依次通过每个作用域直到全局作用域。局部变量找起来会快得。<br>全局作用域中的变量存在于脚本的整个生命周期。而局部变量会在离开局部作用域的时候被销毁，它们占用的内存可以被垃圾收集器回收。</p>
+</li>
+<li><p>全局作用域由 window（在我们的游戏中是什么this？ 还是pomelo ） 对象共享，也就是说它本质上是两个作用域而不是一个。<em>在全局作用域中，变量总是通过其名称来定位，而不是像局部变量那样经过优化，通过预定义的索引来定位。这最终导致脚本引擎需要花更多时间来找到全局变量。</em></p>
+</li>
+<li><p>函数通常也在全局作用域中创建。因此一个函数调另一个函数，另一个函数再接着调其它函数，如此深入下去，脚本引擎就会不断增加往回定位全局变量的时间。\</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var i, s = &apos;&apos;;</div><div class="line">function testfunction() &#123;  </div><div class="line">    for(i = 0; i &lt; 20; i++) &#123;</div><div class="line">    s += i;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">testfunction();</div></pre></td></tr></table></figure>
+<p>下面的替代版本更快一些<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function testfunction() &#123;</div><div class="line">  var i, s = &apos;&apos;;  </div><div class="line">  for(i = 0; i &lt; 20; i++) &#123;</div><div class="line">    s += i;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">testfunction();</div></pre></td></tr></table></figure></p>
+<h4 id="注意对象的隐式换"><a href="#注意对象的隐式换" class="headerlink" title="注意对象的隐式换"></a>注意对象的隐式换</h4><p>字面量，比如字符中、数、和布尔值，在 ECMAScript 中有两种表现形式。它们每种类型都可以作为值创建，也可以作为对象创建。比如，var oString = ‘some content’; 创建了一个字符串值，而 var oString = new String(‘some content’); 创建了等价的字符串对象。</p>
+<p>所有属性和方法都是在字符串对象而不是值上定义的。如果你对字符串值调用属性和方法，ECMAScript 引擎必须用相同的字符串值隐式地创建一个新的字符串对象，然后才能调用方法。这个对象仅用于这一个需求，如果下次再对字符串值调用某个方法，会再次类似地创建字符串对象。</p>
+<h4 id="在要求性能的函数中避免使用-for-in"><a href="#在要求性能的函数中避免使用-for-in" class="headerlink" title="在要求性能的函数中避免使用 for-in"></a>在要求性能的函数中避免使用 for-in</h4><p>for-in 循环经常被误用，有时候普通的 for 循环会更合适。for-in 循环需要脚本引擎为所有可枚举的属性创建一个列表，然后检查其中的重复项，之后才开始遍历。更推荐for(;;)和while;</p>
+<h4 id="使用累加形式连接字符串"><a href="#使用累加形式连接字符串" class="headerlink" title="使用累加形式连接字符串"></a>使用累加形式连接字符串</h4><p>字符串连接可以非常消耗性能。使用 + 运算符不会直接把结果赋值给变量，它会在内存中创建一个新的字符串用于保存结果，这个新的字符串可以赋值给变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">`a += &apos;x&apos; + &apos;y&apos;;`</div><div class="line"></div><div class="line">//下面这种方式更快</div><div class="line">a += &apos;x&apos;;</div><div class="line">a += &apos;y&apos;;</div></pre></td></tr></table></figure></p>
+<h4 id="基本运算比调用函数更快"><a href="#基本运算比调用函数更快" class="headerlink" title="基本运算比调用函数更快"></a>基本运算比调用函数更快</h4><p>虽然普通代码中不需要太注意，但在要求性能的循环和函数中还有办法提高性能——把函数调用替换为等价的基本调用。比如对数组调用 push 方法就会比直接通过数组的尾部索引添加元素更慢。再比如对于 Math 对象来说，多数时候，简单的数学计算会比调用方法更恰当。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var min = Math.min(a,b);</div><div class="line">A.push(v);</div><div class="line"></div><div class="line">//下面这种方式可能更好一点</div><div class="line">var min = a &lt; b ? a : b;</div><div class="line">A[A.length] = v;s</div></pre></td></tr></table></figure></p>
+<h4 id="为-setTimeout-和-setInterval-传入函数而不是字符串"><a href="#为-setTimeout-和-setInterval-传入函数而不是字符串" class="headerlink" title="为 setTimeout() 和 setInterval() 传入函数而不是字符串"></a>为 setTimeout() 和 setInterval() 传入函数而不是字符串</h4><p>setTimeout() 和 setInterval() 方法与 eval 类似。解决的办法也是和eval的解决办法差不多。</p>
+<h4 id="延时不精确"><a href="#延时不精确" class="headerlink" title="延时不精确"></a>延时不精确</h4><p>所有情况下超时和间隔时间都可能不准确。一般来说，浏览器延迟的时间可能会略长一些。有些人会把请求时间稍微提前一点来进行补偿，其他人会尝试每次都等待正确的时间。像 CPU 速度、线程状态和 JavaScript 加载等因素都会影响延迟的准确性。多数浏览器不会按 0 毫秒进行延迟，它们会施以最小的延迟来代替，这个延迟一般在 10 到100 毫秒之间</p>
 
       
     </div>
@@ -335,6 +354,22 @@
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/12/游戏中的数据库总结/" rel="prev" title="游戏中的数据库总结">
+                游戏中的数据库总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -383,8 +418,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">liuyongtao</p>
@@ -398,8 +442,8 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -428,6 +472,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#避免使用-eval-或-Function-构造器"><span class="nav-number">1.</span> <span class="nav-text">避免使用 eval 或 Function 构造器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不要使用-with"><span class="nav-number">2.</span> <span class="nav-text">不要使用 with</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不要在要求性能的函数中使用-try-catch-finally"><span class="nav-number">3.</span> <span class="nav-text">不要在要求性能的函数中使用 try-catch-finally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#尽量不用全局变量"><span class="nav-number">4.</span> <span class="nav-text">尽量不用全局变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意对象的隐式换"><span class="nav-number">5.</span> <span class="nav-text">注意对象的隐式换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在要求性能的函数中避免使用-for-in"><span class="nav-number">6.</span> <span class="nav-text">在要求性能的函数中避免使用 for-in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用累加形式连接字符串"><span class="nav-number">7.</span> <span class="nav-text">使用累加形式连接字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本运算比调用函数更快"><span class="nav-number">8.</span> <span class="nav-text">基本运算比调用函数更快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为-setTimeout-和-setInterval-传入函数而不是字符串"><span class="nav-number">9.</span> <span class="nav-text">为 setTimeout() 和 setInterval() 传入函数而不是字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#延时不精确"><span class="nav-number">10.</span> <span class="nav-text">延时不精确</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -454,7 +514,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
 
   <span class="post-meta-divider">|</span>
 
